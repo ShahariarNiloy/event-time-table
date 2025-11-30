@@ -1,49 +1,55 @@
 import type { Dayjs } from "dayjs";
 
-export type Venue = {
+export interface Venue {
   id: number;
   name: string;
-};
+}
 
-export type CellPosition = {
+export interface CellPosition {
   rowIndex: number;
   colIndex: number;
-};
+}
 
-export type Selection = {
+export interface Selection {
   startRow: number;
   endRow: number;
   startCol: number;
   endCol: number;
-};
+}
 
-export type SelectedRange = {
+export interface SelectedRange {
   venues: Venue[];
   startTime: Dayjs;
   endTime: Dayjs;
-};
+}
 
-// Serialized event for localStorage (dates as ISO strings)
-export type SerializedEvent = {
+export interface Event {
+  id: string;
+  name: string;
+  venues: Venue[];
+  startTime: Dayjs;
+  endTime: Dayjs;
+  selection: Selection;
+}
+
+export interface SerializedEvent {
   id: string;
   name: string;
   venueIds: number[];
   startTime: string;
   endTime: string;
   selection: Selection;
-};
+}
 
-// Runtime event with Dayjs objects
-export type Event = {
-  id: string;
-  name: string;
-  venues: Venue[];
-  startTime: Dayjs;
-  endTime: Dayjs;
-  selection: Selection;
-};
-
-export type ClashInfo = {
+export interface ClashInfo {
   hasClash: boolean;
   clashingEvents: Event[];
-};
+}
+
+export interface EventsByDate {
+  [date: string]: Event[];
+}
+
+export interface SerializedEventsByDate {
+  [date: string]: SerializedEvent[];
+}

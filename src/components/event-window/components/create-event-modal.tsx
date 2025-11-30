@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { FC } from "react";
-import type { SelectedRange } from "./types";
+import type { SelectedRange } from "../types";
 
 type CreateEventModalProps = {
   isModalOpen: boolean;

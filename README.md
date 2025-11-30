@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# Event Time Table
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based event scheduling application that allows users to manage events across multiple venues and time slots.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Weekly View**: Navigate through weeks with Monday as the start day
+- **Drag Selection**: Select time slots by dragging across the grid
+- **Touch Support**: Works on mobile and tablet devices
+- **Multiple Venues**: Schedule events across 5 different venues
+- **Clash Detection**: Prevents overlapping events
+- **Persistent Storage**: Events are saved to local storage by date
+- **15-minute Time Slots**: Fine-grained scheduling from 12:00 AM to 11:45 PM
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **Day.js** - Date manipulation
+- **Radix UI** - Accessible UI components
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+pnpm dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Build
+
+```bash
+pnpm build
+```
+
+### Preview
+
+```bash
+pnpm preview
+```
+
+## Usage
+
+1. **Navigate Weeks**: Use the left/right arrow buttons in the header to switch between weeks
+2. **Select Date**: Click on a day in the days header to view events for that date
+3. **Create Event**:
+   - Drag across the grid to select time slots
+   - Click "Create Event" button
+   - Enter event name and save
+4. **View Events**: Events are displayed as colored blocks on the grid
+5. **Delete Event**: Click on an event and use the delete button
+
+## Data Storage
+
+Events are stored in browser's localStorage organized by date in the format:
+
+```json
+{
+  "2025-11-30": [
+    {
+      "id": "uuid",
+      "name": "Event Name",
+      "venues": [...],
+      "startTime": "ISO date string",
+      "endTime": "ISO date string",
+      "selection": {...}
+    }
+  ]
+}
 ```

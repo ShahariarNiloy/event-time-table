@@ -1,5 +1,5 @@
-import type { Dispatch, FC, SetStateAction } from "react";
-import type { Event } from "./types";
+import type { FC } from "react";
+import type { Event } from "../types";
 
 type EventOverlayProps = {
   event: Event;
@@ -10,7 +10,7 @@ type EventOverlayProps = {
     height: number;
   };
   isSelected: boolean;
-  setSelectedEvent: Dispatch<SetStateAction<Event | null>>;
+  setSelectedEvent: (event: Event | null) => void;
   setSelection: (selection: null) => void;
 };
 

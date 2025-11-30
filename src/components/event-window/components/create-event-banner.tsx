@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
-import { Button } from "../ui/button";
-import type { ClashInfo, SelectedRange } from "./types";
+import { Button } from "../../ui/button";
+import type { ClashInfo, SelectedRange } from "../types";
 
 type CreateEventBannerProps = {
   selectedRangeInfo: SelectedRange;
