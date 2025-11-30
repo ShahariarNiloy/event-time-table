@@ -26,6 +26,7 @@ interface EventGridProps {
   onTouchEnd: (e: React.TouchEvent) => void;
   setSelectedEvent: (event: Event | null) => void;
   setSelection: (selection: Selection | null) => void;
+  onDeleteEvent: (eventId: string) => void;
 }
 
 export const EventGrid = ({
@@ -45,6 +46,7 @@ export const EventGrid = ({
   onTouchEnd,
   setSelectedEvent,
   setSelection,
+  onDeleteEvent,
 }: EventGridProps) => {
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -96,6 +98,7 @@ export const EventGrid = ({
             isSelected={isSelected}
             setSelectedEvent={setSelectedEvent}
             setSelection={setSelection}
+            onDelete={onDeleteEvent}
           />
         );
       })}

@@ -29,8 +29,13 @@ export const EventWindow = ({ selectedDate }: EventWindowProps) => {
     handleVenueHeaderScroll,
   } = useScrollSync();
 
-  const { events, createEvent, getCellEvent, getSelectedRangeInfo } =
-    useEvents(selectedDate);
+  const {
+    events,
+    createEvent,
+    getCellEvent,
+    getSelectedRangeInfo,
+    deleteEvent,
+  } = useEvents(selectedDate);
 
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
@@ -128,6 +133,7 @@ export const EventWindow = ({ selectedDate }: EventWindowProps) => {
             onTouchEnd={handleTouchEnd}
             setSelectedEvent={setSelectedEvent}
             setSelection={setSelection}
+            onDeleteEvent={deleteEvent}
           />
         </div>
       </div>
